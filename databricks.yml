@@ -1,0 +1,28 @@
+bundle:
+  name: medlake-azure-pyspark
+include:
+  - resources/*.yml
+artifacts:
+  medlake_wheel:
+    type: whl
+    build: python -m build --wheel
+variables:
+  databricks_host: {description: Azure Databricks workspace URL.}
+  catalog: {default: medlake}
+  landing_path: {default: abfss://landing@REPLACE_ME.dfs.core.windows.net/screening-events/}
+  patient_path: {default: abfss://landing@REPLACE_ME.dfs.core.windows.net/reference/synthetic_patients.csv}
+  facility_path: {default: abfss://landing@REPLACE_ME.dfs.core.windows.net/reference/synthetic_facilities.csv}
+  checkpoint_base: {default: abfss://checkpoints@REPLACE_ME.dfs.core.windows.net}
+  schema_base: {default: abfss://checkpoints@REPLACE_ME.dfs.core.windows.net/schemas}
+  spark_version: {default: 16.4.x-scala2.12}
+  node_type_id: {default: Standard_DS3_v2}
+targets:
+  dev:
+    default: true
+    mode: development
+    workspace: {host: ${var.databricks_host}}
+  prod:
+    mode: production
+    workspace:
+      host: ${var.databricks_host}
+      root_path: /Workspace/Shared/.bundle/${bundle.name}/${bundle.target}

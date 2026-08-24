@@ -1,0 +1,28 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: ["main"]
+permissions:
+  contents: read
+jobs:
+  python-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11", cache: pip}
+      - run: python -m pip install --upgrade pip && pip install -e ".[dev]"
+      - run: ruff check src scripts tests
+      - run: mypy src
+      - run: pytest -q
+      - run: python -m compileall -q src scripts jobs tests
+  terraform:
+    runs-on: ubuntu-latest
+    defaults: {run: {working-directory: infra/terraform}}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - run: terraform fmt -check -recursive
+      - run: terraform init -backend=false
+      - run: terraform validate
