@@ -1,0 +1,16 @@
+resources:
+  jobs:
+    medlake_eventhub_stream:
+      name: medlake-eventhub-stream-${bundle.target}
+      tasks:
+        - task_key: eventhub_to_bronze
+          spark_python_task: {python_file: ../jobs/02_bronze_eventhubs.py}
+          job_cluster_key: streaming_cluster
+          libraries: [{whl: ../dist/*.whl}]
+      job_clusters:
+        - job_cluster_key: streaming_cluster
+          new_cluster:
+            spark_version: ${var.spark_version}
+            node_type_id: ${var.node_type_id}
+            num_workers: 2
+            data_security_mode: USER_ISOLATION

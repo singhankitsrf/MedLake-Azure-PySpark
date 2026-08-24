@@ -1,0 +1,9 @@
+project_name = "medlake"
+environment  = "dev"
+location     = "centralindia"
+
+tags = {
+  workload = "healthcare-data-platform"
+  owner    = "portfolio"
+  managed  = "terraform"
+}

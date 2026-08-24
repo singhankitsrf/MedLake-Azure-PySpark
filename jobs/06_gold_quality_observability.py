@@ -1,0 +1,3 @@
+import os
+from pyspark.sql import functions as F
+catalog=os.getenv("MEDLAKE_CATALOG","medlake"); valid=spark.table(f"{catalog}.silver.screening_events"); bad=spark.table(f"{catalog}.silver.screening_events_quarantine"); valid_count=valid.count(); bad_count=bad.count(); total=valid_count+bad_count; summary=spark.createDataFrame([(valid_count,bad_count,total,(bad_count/total) if total else 0.0)],["valid_rows","quarantined_rows","total_rows","quarantine_rate"]).withColumn("calculated_at",F.current_timestamp()); summary.write.format("delta").mode("append").saveAsTable(f"{catalog}.gold.pipeline_quality_metrics")
