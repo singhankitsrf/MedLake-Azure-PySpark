@@ -26,6 +26,7 @@ def evaluate(rows=1000, seed=42):
         .config("spark.ui.enabled", "false")
         .config("spark.sql.shuffle.partitions", "2")
         .config("spark.sql.session.timeZone", "UTC")
+        .config("spark.sql.ansi.enabled", "true")
         .getOrCreate()
     )
     spark.sparkContext.setLogLevel("ERROR")
