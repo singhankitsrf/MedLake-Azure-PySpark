@@ -27,3 +27,16 @@ jobs:
       - run: terraform fmt -check -recursive
       - run: terraform init -backend=false
       - run: terraform validate
+
+  spark-evaluation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - uses: actions/setup-java@v4
+        with: {distribution: temurin, java-version: '17'}
+      - run: pip install -e . pyspark==3.5.3
+      - run: PYTHONPATH=.:src python scripts/evaluate_local.py --output evaluation/ci_spark.json
+      - uses: actions/upload-artifact@v4
+        with: {name: spark-evaluation, path: evaluation/ci_spark.json}

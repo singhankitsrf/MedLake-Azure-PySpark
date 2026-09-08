@@ -1,0 +1,18 @@
+{
+  "scope": "local PySpark on synthetic events; not Azure deployment",
+  "seed": 42,
+  "generated_rows": 1000,
+  "input_rows_with_faults_and_duplicates": 1003,
+  "unique_valid_rows": 996,
+  "quarantined_rows": 5,
+  "duplicate_valid_rows_removed": 2,
+  "gold_screenings": 996,
+  "checks": {
+    "invalid_rows_quarantined": true,
+    "expected_unique_valid_rows": true,
+    "gold_reconciles_to_silver": true,
+    "replay_deduplication_idempotent": true
+  },
+  "fixture_sha256": "2383d3fed67214c0f2043193d73b95d9bd703127120142ca0c988c757dcd79bc",
+  "spark_version": "3.5.3"
+}

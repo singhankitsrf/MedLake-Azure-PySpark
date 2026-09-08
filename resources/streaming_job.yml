@@ -7,6 +7,10 @@ resources:
           spark_python_task: {python_file: ../jobs/02_bronze_eventhubs.py}
           job_cluster_key: streaming_cluster
           libraries: [{whl: ../dist/*.whl}]
+        - task_key: bronze_to_silver_gold
+          spark_python_task: {python_file: ../jobs/07_stream_silver_gold.py}
+          job_cluster_key: streaming_cluster
+          libraries: [{whl: ../dist/*.whl}]
       job_clusters:
         - job_cluster_key: streaming_cluster
           new_cluster:
