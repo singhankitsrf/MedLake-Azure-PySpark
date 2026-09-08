@@ -83,3 +83,8 @@ Cloud deployment screenshots, performance claims, and cost figures should be add
 ## Author
 
 **Ankit Kumar Singh** — Azure Data Engineering • PySpark • Databricks • Delta Lake • MLOps / Data Platform Engineering
+
+## Hugging Face deployment and evaluation
+
+See [deployment instructions](docs/HUGGING_FACE.md) and the `hf_space/` application.
+The `evaluation/` directory distinguishes measured results from pending image-model evaluation.

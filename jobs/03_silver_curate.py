@@ -1,3 +1,16 @@
 import os
-from medlake.spark_transforms import add_quality_flags,deduplicate_batch,normalize_events
-catalog=os.getenv("MEDLAKE_CATALOG","medlake"); df=spark.table(f"{catalog}.bronze.screening_events_raw"); curated=deduplicate_batch(add_quality_flags(normalize_events(df))); curated.filter("_is_valid = true").drop("_quality_errors","_is_valid").write.format("delta").mode("overwrite").option("overwriteSchema","true").saveAsTable(f"{catalog}.silver.screening_events"); curated.filter("_is_valid = false").write.format("delta").mode("overwrite").option("overwriteSchema","true").saveAsTable(f"{catalog}.silver.screening_events_quarantine")
+from medlake.spark_transforms import add_quality_flags, deduplicate_batch, normalize_events
+
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.getOrCreate()
+
+catalog = os.getenv("MEDLAKE_CATALOG", "medlake")
+df = spark.table(f"{catalog}.bronze.screening_events_raw")
+curated = deduplicate_batch(add_quality_flags(normalize_events(df)))
+curated.filter("_is_valid = true").drop("_quality_errors", "_is_valid").write.format("delta").mode(
+    "overwrite"
+).option("overwriteSchema", "true").saveAsTable(f"{catalog}.silver.screening_events")
+curated.filter("_is_valid = false").write.format("delta").mode("overwrite").option(
+    "overwriteSchema", "true"
+).saveAsTable(f"{catalog}.silver.screening_events_quarantine")
