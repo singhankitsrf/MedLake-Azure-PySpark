@@ -88,3 +88,9 @@ Cloud deployment screenshots, performance claims, and cost figures should be add
 
 See [deployment instructions](docs/HUGGING_FACE.md) and the `hf_space/` application.
 The `evaluation/` directory distinguishes measured results from pending image-model evaluation.
+
+## Project management
+
+- **Project charter:** [`PROJECT.md`](PROJECT.md)
+- **Live execution roadmap:** [Project Roadmap #7](https://github.com/singhankitsrf/MedLake-Azure-PySpark/issues/7)
+- **Portfolio index:** [Five flagship GitHub projects](https://github.com/singhankitsrf/AgentForge-Enterprise-Agentic-RAG/blob/main/PORTFOLIO_PROJECTS.md)
