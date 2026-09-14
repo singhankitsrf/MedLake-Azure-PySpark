@@ -38,5 +38,5 @@ jobs:
         with: {distribution: temurin, java-version: '17'}
       - run: pip install -e . pyspark==3.5.3
       - run: PYTHONPATH=.:src python scripts/evaluate_local.py --output evaluation/ci_spark.json
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with: {name: spark-evaluation, path: evaluation/ci_spark.json}
