@@ -80,6 +80,13 @@ databricks bundle deploy --target dev
 
 Cloud deployment screenshots, performance claims, and cost figures should be added only after they are measured in the owner’s Azure environment.
 
+
+## Evidence and real-world implementation
+
+Personally implemented by Ankit Kumar Singh as a data-platform engineering project informed by healthcare data workflows and multidisciplinary institutional work, including the Indo–Norway IReSOpM consortium supported by DST (India) and RCN (Norway).
+
+Evidence is deliberately separated into repository-verifiable artifacts and author-confirmed institutional execution. See [EVIDENCE.md](EVIDENCE.md) for the verification matrix, reviewer path and claim boundaries.
+
 ## Author
 
 **Ankit Kumar Singh** — Azure Data Engineering • PySpark • Databricks • Delta Lake • MLOps / Data Platform Engineering
@@ -87,7 +94,7 @@ Cloud deployment screenshots, performance claims, and cost figures should be add
 ## Hugging Face deployment and evaluation
 
 See [deployment instructions](docs/HUGGING_FACE.md) and the `hf_space/` application.
-The `evaluation/` directory distinguishes measured results from pending image-model evaluation.
+The `evaluation/` directory records local PySpark execution results, validation status and the boundary between measured local evidence and uncommitted Azure execution evidence.
 
 ## Project management
 
