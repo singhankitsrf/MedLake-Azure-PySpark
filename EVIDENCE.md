@@ -18,6 +18,12 @@ This statement records the author's implementation history. It does not by itsel
 | Cloud boundary | Azure and Databricks definitions are present; public cloud run records are not currently committed. | Repository-verifiable boundary |
 | Ownership | The repository was personally implemented by Ankit Kumar Singh. | Author-confirmed |
 
+## Leadership and delivery context
+
+The author reports personal implementation together with AI Lead / Project Manager experience in multidisciplinary institutional programmes, including IReSOpM, an Indo–Norway consortium supported by DST (India) and RCN (Norway). The repository demonstrates the transferable data-platform practices used in such environments: contracts, quarantine, idempotency, medallion processing, streaming, infrastructure as code and operational monitoring.
+
+The committed measurements are from the local synthetic Spark run. Confidential institutional datasets and uncommitted Azure account evidence are not implied by those measurements.
+
 ## Reviewer path
 
 1. Read the main README and architecture documentation.
