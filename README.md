@@ -94,7 +94,7 @@ Evidence is deliberately separated into repository-verifiable artifacts and auth
 ## Hugging Face deployment and evaluation
 
 See [deployment instructions](docs/HUGGING_FACE.md) and the `hf_space/` application.
-The `evaluation/` directory distinguishes measured results from pending image-model evaluation.
+The `evaluation/` directory records local PySpark execution results, validation status and the boundary between measured local evidence and uncommitted Azure execution evidence.
 
 ## Project management
 
